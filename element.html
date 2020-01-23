@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="tabel-contoh">
+        <thead>
+            <tr>
+                <th>Judul 1</th>
+                <th>Judul 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Isi 1</td>
+                <td>Isi 2</td>
+            </tr>
+            <tr>
+                <td>Isi 3</td>
+                <td>Isi 4</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total 1</td>
+                <td>Total 2</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+<script>
+
+    var tabel = document.getElementById("tabel-contoh");
+    var TelusuriDOM = function telusuri(node, fungsi_cek, fungsi_aksi) {
+        if (fungsi_cek(node)) {
+            fungsi_aksi(node);
+        }
+
+        node = node.firstChild;
+
+        while (node) {
+            telusuri(node, fungsi_cek, fungsi_aksi);
+            node = node.nextSibling;
+        }
+    };
+
+    var CekIsiKolom = function (node) {
+        return node.innerHTML === "Isi 4" && node.nodeName === "TD";
+    };
+
+    var HapusBaris = function (node) {
+        var baris = node.parentNode;  // orang tua <td> selalu adalah <tr>
+        var badan = baris.parentNode; // (logikanya) idem
+
+        badan.removeChild(baris);
+    };
+
+    TelusuriDOM(tabel, CekIsiKolom, HapusBaris);
+</script>
+
+</html>

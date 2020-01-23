@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,37 +9,96 @@
     <!-- <script src="javascript.js"></script> -->
     <title>Document</title>
 </head>
+
 <body>
     <div class="card" id="container">
         <h1 class="heading">Judul Pertama</h1>
-            <p>Paragraf Pertama</p>
-            <p>Paragraf Kedua</p>
-            <p>Paragraf Ketiga</p>
-            <h2 class="heading">Judul Kedua</h2>
-
-            <form action="post" id="comments">
-                <input type="text"
-                   name="comment-title"
-                   id="title"><br>
-
-                <textarea name="comment-box"
-                      id="comment-box"
-                      class="box"></textarea><br>
-                <input type="file">
-                <input type="reset" class="button">
-                <input type="submit" class="button submit">
-            </form>
+        <p>Paragraf Pertama</p>
+        <p>Paragraf Kedua</p>
+        <p>Paragraf Ketiga</p>
+        <h2 class="heading">Judul Kedua</h2>
+        <form action="post" id="comments">
+            <input type="text" name="comment-title" id="title"><br>
+            <textarea name="comment-box" id="comment-box" class="box"></textarea><br>
+            <input type="file">
+            <input type="reset" class="button">
+            <input type="submit" class="button submit">
+        </form>
+        <!-- <h3 class="heading">coba</h3> -->
     </div>
 
     <script>
         var ct = document.getElementById("title");
+        ct.getAttribute("type")
+        ct.getAttribute("name")
         var headings = document.getElementsByClassName("heading");
         headings[0];
         headings[1];
-
+        // headings[2];
         var button = document.getElementsByClassName("button");
         button.item(0);
         button.namedItem("btn-submit");
+
+        var paragraf = document.getElementsByTagName("p");
+        paragraf.item(0)
+        paragraf.length
+
+        var coba = document.getElementsByName("comment-title")
+        coba[0]
+
+        var style = document.querySelectorAll(".heading, p")
+        style.length
+        style.item(0)
+        document.querySelector(".heading")
+
+        var par = document.createElement("p")
+        var teks = document.createTextNode("coba 123")
+        par.appendChild(teks)
+
+        var container = document.getElementById("container")
+        container.appendChild(par)
+
+        var judulpertama = document.querySelector("h1.heading")
+        container.insertBefore(par, judulpertama)
+
+
+        // coba looping element NOT RECOMENDED
+        var link
+        for (var index = 0; index < 10; index++) {
+            link = document.createElement('a')
+            link.innerHTML = 'teks'
+            container.appendChild(link)
+        }
+
+        // CREATE FRAGMENT
+        var ling, fragment = document.createDocumentFragment();
+        for (let i = 0; i < 10; i++) {
+            ling = document.createElement('a')
+            ling.innerHTML = "coba"
+            fragment.appendChild(ling)
+        }
+        container.appendChild(fragment)
+
+        //setattribut and getattribut
+        var textbox = document.getElementById("title");
+        textbox.setAttribute("size", 90);
+        textbox.removeAttribute("size")
+        textbox;
+
+        //merubah css style
+        var container = document.getElementById("container");
+        container.style.background = "#d33"
+        container.style.color="#fff"
+
+        var cssContainer = container.style
+        cssContainer.border= "1px solid #000"
+        var paddingL = cssContainer.paddingLeft
+        paddingL="50px"
+
+        // css pseudo element
+        var propcss = window.getComputedStyle(container, null)
+        var hover = propcss.getPropertyValue("color")
     </script>
 </body>
+
 </html>
